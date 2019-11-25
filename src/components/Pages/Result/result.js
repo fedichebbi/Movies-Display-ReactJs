@@ -1,9 +1,11 @@
 import React from "react";
 import "./result.css";
+import { CircularProgress } from "@material-ui/core";
 export class result extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       movie: {}
     };
   }
@@ -16,11 +18,21 @@ export class result extends React.Component {
     fetch("http://api.tvmaze.com/shows/" + id)
       .then(response => response.json())
       .then(resData => {
+        this.setState({ loading: false });
         this.setState({ movie: resData });
+      })
+      .catch(() => {
+        this.setState({ loader: false });
       });
   }
   render() {
-    const { movie } = this.state;
+    const { movie, loading } = this.state;
+    if (loading)
+      return (
+        <div className="LoaderContainer">
+          <CircularProgress />
+        </div>
+      );
     return (
       <div className="DetailContainer">
         <div className="DetailShowContainer">
