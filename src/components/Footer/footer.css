@@ -1,0 +1,16 @@
+.Footer {
+  bottom: 0;
+  width: 100%;
+  background-color: #65b3fa;
+  color: white;
+  text-align: center;
+}
+
+.FooterContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5vw;
+  color: white;
+}
